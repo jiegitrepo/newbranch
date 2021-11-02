@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Parsing structured JSON text into native Python data structures...
 
 ...and how to access and work with nested data.
@@ -31,3 +31,12 @@ json_data = json.loads(json_text)
 # Display the type and contents of the json_data variable
 print("json_data is a", type(json_data))
 pprint(json_data)
+
+
+#print("\n \n \n \n")
+
+#for interface in json_data["ietf-interfaces:interface"]:
+#	pprint(interface)
+
+
+
