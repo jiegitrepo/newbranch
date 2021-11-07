@@ -6,7 +6,6 @@ from requests.auth import HTTPBasicAuth
 import os
 import sys
 
-requests.packages.urllib3.disable_warnings()
 
 
 DNAC="sandboxdnac.cisco.com"
@@ -85,7 +84,7 @@ def print_info(modules):
 
 
 
-if __name__ == "__main__":
+'''if __name__ == "__main__":
     response = list_network_devices()
     print("{0:42}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
         format("hostname","mgmt IP","serial",
@@ -100,13 +99,20 @@ if __name__ == "__main__":
                     device['platformId'],
                     device['softwareVersion'],
                     device['role'],uptime))
+'''
 
 
-'''if __name__ == "__main__":
+def print_info(modules):
+
+    print("{0:30}{1:15}{2:25}{3:5}".format("Module Name","Serial Number","Part Number","Is Field Replaceable?"))
+    for module in modules['response']:
+        print("{moduleName:30}{serialNumber:15}{partNumber:25}{moduleType:5}".format(moduleName=module['name'], serialNumber=module['serialNumber'], partNumber=module['partNumber'], moduleType=module['isFieldReplaceable']))
+
+
+if __name__ == "__main__":
    if len(sys.argv) > 1:
        dev_id = ip_to_id(sys.argv[1])
        modules = get_modules(dev_id)
        print_info(modules)
    else:
        print("Usage: %s device_ip" % sys.argv[0])
-'''
